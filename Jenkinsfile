@@ -28,7 +28,7 @@ pipeline {
         
        stage('Deploy') {
             environment {
-                CHECK_CONTAINER = sh(script: "ssh -oStrictHostKeyChecking=no jenkins@app-server /opt/check-front-end.sh", , returnStdout: true).trim()
+                CHECK_CONTAINER = sh(script: "ssh -oStrictHostKeyChecking=no jenkins@app-server /tmp/check-front-end.sh", , returnStdout: true).trim()
                 
             }
                 
