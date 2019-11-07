@@ -14,7 +14,7 @@ pipeline{
             steps {
                 
                 dir('./ansible'){
-                    sh 'ansible-playbook build.yml --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
+                    sh 'ansible-playbook build.yml --tags "front-end-build" --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
                 }
                 
             }
