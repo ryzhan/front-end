@@ -10,11 +10,22 @@ pipeline{
             }
         }   
         
-        stage('build and run front-end') {
+        stage('build front-end') {
             steps {
                 
                 dir('./ansible'){
                     sh 'ansible-playbook build.yml --tags "front-end-build" --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
+                }
+                
+            }
+            
+        }
+           
+        stage('run front-end') {
+            steps {
+                
+                dir('./ansible'){
+                    sh 'ansible-playbook build.yml --tags "front-end-run" --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
                 }
                 
             }
