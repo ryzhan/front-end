@@ -24,6 +24,10 @@ pipeline{
         stage('run front-end') {
             steps {
                 
+                timeout(time:5, unit:'DAYS') {
+                    input message:'Approve deployment?'
+                }
+                
                 dir('./ansible'){
                     sh 'ansible-playbook build.yml --tags "front-end-run" --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
                 }
