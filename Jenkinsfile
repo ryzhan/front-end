@@ -4,13 +4,13 @@ pipeline{
        //environment {
         //   BUILD_NUMBER="$BUILD_NUMBER"       }
        stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
                 git url: 'https://github.com/ryzhan/ConfDemo3.git'
             }
         }   
         
-        stage('build front-end') {
+        stage('Build front-end') {
             steps {
                 
                 dir('./ansible'){
@@ -27,7 +27,7 @@ pipeline{
                 }
         }
            
-        stage('run front-end') {
+        stage('Run front-end') {
             steps {
                 
                 timeout(time:5, unit:'DAYS') {
