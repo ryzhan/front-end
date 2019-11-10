@@ -25,13 +25,19 @@ pipeline{
                     archiveArtifacts artifacts: '**/*', fingerprint: true
                 }
         }
+        
+        stage('Approve for Deploy') {
+        
+                steps {
+                    timeout(time:5, unit:'DAYS') {
+                        input message:'Approve deployment?'
+                    }
+
+                }
+        }   
            
         stage('Run front-end') {
             steps {
-                
-                timeout(time:5, unit:'DAYS') {
-                    input message:'Approve deployment?'
-                }
                 
                 dir('./ansible'){
                     sh 'ansible-playbook build_microservices.yml --tags "front-end-run" --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
