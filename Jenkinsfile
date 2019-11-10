@@ -14,7 +14,7 @@ pipeline{
             steps {
                 
                 dir('./ansible'){
-                    sh 'ansible-playbook build.yml --tags "front-end-build" --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
+                    sh 'ansible-playbook build_microservices.yml --tags "front-end-build" --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
                 }
                 
             }
@@ -29,7 +29,7 @@ pipeline{
                 }
                 
                 dir('./ansible'){
-                    sh 'ansible-playbook build.yml --tags "front-end-run" --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
+                    sh 'ansible-playbook build_microservices.yml --tags "front-end-run" --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
                 }
                 
             }
