@@ -50,7 +50,7 @@ pipeline{
         always {
             echo 'I have finished'
             echo 'And cleaned workspace'
-            //deleteDir()
+            deleteDir()
         }
         success {
             echo 'Job succeeeded!'
