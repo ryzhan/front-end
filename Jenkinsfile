@@ -1,8 +1,7 @@
 #!groovy
 pipeline{
     agent any
-       //environment {
-        //   BUILD_NUMBER="$BUILD_NUMBER"       }
+       
        stages {
         stage('Checkout') {
             steps {
@@ -14,7 +13,7 @@ pipeline{
             steps {
                 
                 dir('./ansible'){
-                    sh 'ansible-playbook build_microservices.yml --tags "front-end-build" --extra-var "BUILD_NUMBER=$BUILD_NUMBER"'
+                    sh 'ansible-playbook build_microservices.yml --tags "front-end-build" --extra-var "BUILD_NUMBER=$BUILD_NUMBER WORKSPACE=$WORKSPACE"'
                 }
                 
             }
